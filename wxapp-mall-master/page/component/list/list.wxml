@@ -1,0 +1,17 @@
+<view class="main">
+    <view class="banner">
+        <image src="{{proType.proImgurl}}"></image>
+    </view>
+
+    <view class="list-box">
+        <block wx:for="{{proTypeList}}" wx:for-item="item">
+          <view class="newest-list">
+            <navigator url="../details/details?id={{item.proId}}">
+                <image src="{{item.proImgurl}}"></image>
+                <view class="newest-text"><text>{{item.proName}}</text></view>
+                <view class="newest-text"><text>￥ {{item.price}}</text></view>
+            </navigator>
+        </view>
+        </block>
+    </view>
+</view>

@@ -1,0 +1,58 @@
+<view class="main">
+  <swiper indicator-dots="true" autoplay="true" interval="{{interval}}" duration="{{duration}}" circular="true">
+    <block wx:for="{{imgUrls}}" wx:key="{{index}}">
+      <swiper-item>
+        <image src="{{item}}" class="slide-image" width="100%" />
+      </swiper-item>
+    </block>
+  </swiper>
+  <view class="search">
+    <navigator url="search/search">
+      <view class="search-text">
+        <icon class="weui-icon-search_in-box search-icon" type="search" size="14"></icon>
+        搜 索
+      </view>
+    </navigator>
+  </view>
+  <view class="selected">
+    <view class="select-title">
+      <text>精选主题</text>
+    </view>
+    <view class="select-top">
+      <block wx:for="{{proType}}" wx:for-item="item">
+        <view wx:if="{{index <= 1}}" class="select-top-small">
+          <navigator url="list/list?proTypeId={{item.proType}}">
+            <image src="{{item.proImgurl}}"></image>
+          </navigator>
+        </view>
+      </block>
+    </view>
+    <view class="select-bottom">
+      <block wx:for="{{proType}}" wx:if="{{index > 1}}">
+        <navigator url="list/list">
+          <image src="{{item.proImgurl}}"></image>
+        </navigator>
+      </block>
+    </view>
+  </view>
+  <view class="newest">
+    <view class="newest-title">
+      <text>最近新品</text>
+    </view>
+    <view class="newest-box">
+      <block wx:for="{{produceList}}" wx:for-item="item">
+        <view class="newest-list">
+          <navigator url="details/details?id={{item.proId}}">
+            <image src="{{item.proImgurl}}"></image>
+            <view class="newest-text">
+              <text>{{item.proName}}</text>
+            </view>
+            <view class="newest-text">
+              <text>{{item.price}}</text>
+            </view>
+          </navigator>
+        </view>
+      </block>
+    </view>
+  </view>
+</view>
